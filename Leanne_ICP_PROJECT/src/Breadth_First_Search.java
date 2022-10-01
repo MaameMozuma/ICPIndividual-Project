@@ -75,6 +75,7 @@ public class Breadth_First_Search {
         if (DataReader.Route_List.containsKey(key)) {
             actions_list = DataReader.Route_List.get(key);
         }
+        System.out.println(actions_list);
         return actions_list;
     }
 
@@ -91,6 +92,7 @@ public class Breadth_First_Search {
         System.out.println("About to do a BFS on the problem");
         Starting_Nodes_Available = getStartingNodes(DataReader.getAirport_List());
 
+        //System.out.println(Starting_Nodes_Available);
         for (Node n : Starting_Nodes_Available){
             if (this.goal_test(n)) {
                 System.out.println("You are there!");
@@ -100,36 +102,37 @@ public class Breadth_First_Search {
             }
             Frontier.add(n);
         }
+        //System.out.println(Frontier);
 
             // Checking if the frontier is empty.
         while(!Frontier.isEmpty()) {
             Node popped_node = Frontier.remove();
             Explored_Nodes.add(popped_node.getState());
+            System.out.println(popped_node);
 
             ArrayList<Route> actions_available = new ArrayList<>();
             //checking if there are any routes from a particular airport we are at
-            try{
-                actions_available = actions(popped_node.getState());
-            }// throws an error if there are no routes from that airport
-            catch (NullPointerException npe){
-                System.out.println(npe.getMessage());
-                System.out.println("You probably entered a destination that does not exist.");
-                return false;
-            }
+
+
+            actions_available = actions(popped_node.getState());
+                //System.out.println(actions_available);
+
 
             for (Route r: actions_available) {
-                //creating a node for every successor of the current node popped
-                Node child = new Node(DataReader.iata_hashtable.get(r.getDestination_Airport_Code()),
-                        popped_node, r, popped_node.getPath_cost() + 1);
-                //checking if the generated node already exists in the frontier and the explored set
-                if (!Explored_Nodes.contains(child.getState()) && !Frontier.contains(child)) {
-                    if (this.goal_test(child)) {
-                          System.out.println(child);
-                          printPath(child);
-                          return true;
+                if (DataReader.iata_hashtable.get(r.getDestination_Airport_Code()) != null) {
+                    //creating a node for every successor of the current node popped
+                    Node child = new Node(DataReader.iata_hashtable.get(r.getDestination_Airport_Code()),
+                            popped_node, r, popped_node.getPath_cost() + 1);
+                    //checking if the generated node already exists in the frontier and the explored set
+                    if (!Explored_Nodes.contains(child.getState()) && !Frontier.contains(child)) {
+                        if (this.goal_test(child)) {
+                            System.out.println(child);
+                            printPath(child);
+                            return true;
+                        }
+                        //adds the generated node to the frontier if it doesn't exist
+                        Frontier.add(child);
                     }
-                    //adds the generated node to the frontier if it doesn't exist
-                    Frontier.add(child);
                 }
             }
         }
