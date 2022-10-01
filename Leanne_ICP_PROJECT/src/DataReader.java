@@ -22,6 +22,12 @@ public class DataReader {
     static Hashtable<String, Airport> iata_hashtable = new Hashtable();
     static ArrayList<String> Source_Destination_List = new ArrayList();
 
+    /**
+    *@param input_File
+    *@param airport_File
+    *@param airline_File
+    *@param route_File
+    */
     public DataReader(String input_File, String airport_File, String airline_File, String route_File) {
         Input_File = input_File;
         this.Airport_File = airport_File;
@@ -29,7 +35,11 @@ public class DataReader {
         this.Route_File = route_File;
     }
 
-    // This function checks if the file exists and if it is empty. If it is empty, it throws an exception.
+    /**
+     * This function checks if the file is empty or not, and if it is, it throws an exception
+     * @param file_name The name of the file to be checked.
+     * @return The Scanner object is being returned.
+     */
     public static Scanner CheckFileValidity(String file_name) {
         try {
             inputStream = new Scanner(new FileInputStream(file_name));
@@ -47,23 +57,28 @@ public class DataReader {
         return inputStream;
     }
 
-    // This function reads the airport file and stores the data in a hashmap
+
     /**
      * This function reads the airport file and stores the data in a hash table
-     *
      * @param fileStreamObject The file stream object that is passed in from the main method.
      */
     public void ReadAirportFile(Scanner fileStreamObject) {
         while(fileStreamObject.hasNextLine()) {
             String[] line = fileStreamObject.nextLine().split(",");
             if (line.length == 14 && !line[9].equals("\\N")) {
-                Airport airport = new Airport(Integer.parseInt(line[0]), line[1], line[2], line[3], line[4], line[5], Float.parseFloat(line[6]), Float.parseFloat(line[7]), Integer.parseInt(line[8]), Float.parseFloat(line[9]), line[10], line[11], line[12], line[13]);
+                Airport airport = new Airport(Integer.parseInt(line[0]),
+                        line[1], line[2], line[3], line[4], line[5],
+                        Float.parseFloat(line[6]), Float.parseFloat(line[7]),
+                        Integer.parseInt(line[8]), Float.parseFloat(line[9]), line[10],
+                        line[11], line[12], line[13]);
                 String arr = line[2] + line[3];
                 String iata_code = line[4];
                 if (iata_code != "\\N") {
                     iata_hashtable.put(iata_code, airport);
                 }
 
+                //checking if that city and country exists in the dictionary and
+                //adding the airport to an array list of airports if not, create a new entry
                 if (this.checkKeyExists(arr)) {
                     Airport_List.get(arr).add(airport);
                 } else {
@@ -79,7 +94,6 @@ public class DataReader {
 
     /**
      * This function checks if the airport code exists in the HashMap
-     *
      * @param a The airport code that you want to check if it exists in the HashMap
      * @return A boolean value.
      */
@@ -98,14 +112,14 @@ public class DataReader {
 
     /**
      * This function reads the airline file and stores the data in a hashmap
-     *
      * @param fileStreamObject The file stream object that is used to read the file.
      */
     public void ReadAirlineFile(Scanner fileStreamObject) {
         while(fileStreamObject.hasNextLine()) {
             String[] line = fileStreamObject.nextLine().split(",");
             if (line.length == 8) {
-                Airline airline = new Airline(Integer.parseInt(line[0]), line[1], line[2], line[3], line[4], line[5], line[6], line[7]);
+                Airline airline = new Airline(Integer.parseInt(line[0]), line[1],
+                        line[2], line[3], line[4], line[5], line[6], line[7]);
                 Airline_List.put(Integer.parseInt(line[0]), airline);
             }
         }
@@ -115,7 +129,6 @@ public class DataReader {
 
     /**
      * This function reads the route file and creates a hashmap of routes with the key being the route_id
-     *
      * @param fileStreamObject The file stream object that is passed in from the main method.
      */
     public void ReadRouteFile(Scanner fileStreamObject) {
@@ -135,7 +148,6 @@ public class DataReader {
 
     /**
      * This function reads the input file and stores the source and destination in a list
-     *
      * @param fileStreamObject This is the object of the Scanner class that we created in the main method.
      */
     public static void ReadInputFile(Scanner fileStreamObject) {
@@ -161,10 +173,10 @@ public class DataReader {
 
     /**
      * This function returns the Airport_List Hashtable
-     *
      * @return The Airport_List Hashtable is being returned.
      */
     public static Hashtable<String, ArrayList<Airport>> getAirport_List() {
         return Airport_List;
     }
 }
+
