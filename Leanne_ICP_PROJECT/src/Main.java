@@ -13,7 +13,8 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Starting Reading...");
-        DataReader dataReader = new DataReader("accra-winnipeg.txt", "airports.csv", "airlines.csv", "routes.csv");
+        DataReader dataReader = new DataReader("accra-winnipeg.txt", "airports.csv",
+                "airlines.csv", "routes.csv");
         dataReader.ReadAllFiles();
         File file = new File("accra-winnipeg.txt");
         Scanner scan = new Scanner(file);
@@ -35,5 +36,7 @@ public class Main {
         destCountry = dest.split(",")[1].trim();
         Breadth_First_Search bfs = new Breadth_First_Search(startCity, startCountry, destCity, destCountry);
         bfs.BFS();
+
+        System.out.println("Done executing!");
     }
 }
