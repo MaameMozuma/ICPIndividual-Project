@@ -6,7 +6,7 @@
 
 Java
 
-**Entry Point of Program **
+**Entry Point of Program**
 
 **LEANNE_ICP_PROJECT**
  - Project directory
