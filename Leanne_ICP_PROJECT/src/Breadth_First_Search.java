@@ -159,7 +159,7 @@ public class Breadth_First_Search {
      * @param destination The destination node
      */
     public static void printPath(Node destination) {
-        String file_string_name = Source_City_Name + "-" + Destination_City_Name + "_output.txt";
+        String file_string_name = Source_City_Name.toLowerCase() + "-" + Destination_City_Name.toLowerCase() + "_output.txt";
         ArrayList<Route> actions = new ArrayList();
 
         //adding a route to the actions array list so long as its parent is not null
