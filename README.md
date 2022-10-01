@@ -6,7 +6,7 @@
 
 Java
 
-** Entry Point of Program **
+**Entry Point of Program **
 
 **LEANNE_ICP_PROJECT**
  - Project directory
@@ -17,7 +17,14 @@ Java
     - Node.java
     
     - Route.java
+    
     - Main.java
+    
+    - DataReader.java
+    
+    - BreadthFirstSearch.java
+    
+    - EmptyFileException.java
 
 RUN 
 
