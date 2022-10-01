@@ -2,6 +2,13 @@
 
 ## First ICP Individual Project
 
+NB: Kindly select Leanne_ICP_PROJECT to see all files that were created. It includes the reflection document, csv files, java files and .txt files.
+To run test cases:
+- create your input file (.txt)
+- go the main.java file
+- replace "accra-winnipeg.txt" with your input file in quotation marks. E.g. "accra-istanbul.txt"
+- then run the main file
+
 **Tech Stack**
 
 Java
