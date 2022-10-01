@@ -133,6 +133,7 @@ public class Breadth_First_Search {
                 }
             }
         }
+        System.out.println("We could not find a valid path.Try again");
         return false;
     }
 
