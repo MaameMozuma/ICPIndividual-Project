@@ -8,12 +8,12 @@ public class Node implements Comparable<Node> {
     private Route Action;
     private int Path_cost;
 
-    public Node(Airport state, Route action, int path_cost) {
-        this.state = state;
-        this.Action = action;
-        this.Path_cost = path_cost;
-    }
-
+    /**
+     * @param state
+     * @param parent
+     * @param action
+     * @param path_cost
+     * */
     public Node(Airport state, Node parent, Route action, int path_cost) {
         this.state = state;
         this.Parent = parent;
@@ -23,7 +23,6 @@ public class Node implements Comparable<Node> {
 
     /**
      * The function takes in a node and returns a string representation of the node
-     *
      * @return The state, action, and path cost of the node.
      */
     public String toString() {
@@ -32,7 +31,6 @@ public class Node implements Comparable<Node> {
 
     /**
      * If the state of the current node is equal to the state of the node passed in, return 1, else return 0
-     *
      * @param n The node to compare to
      * @return 1 if the states are equal, 0 otherwise
      */
@@ -47,7 +45,6 @@ public class Node implements Comparable<Node> {
     /**
      * If the object is not null and the state is not null, then return true if the state is equal to the state of the
      * object
-     *
      * @param obj The object to compare to.
      * @return The hashcode of the state.
      */
@@ -58,19 +55,17 @@ public class Node implements Comparable<Node> {
             return false;
         } else {
             Node node = (Node)obj;
-            return obj != null && this.state != null ? this.state.equals(node.state) : false;
+            return obj != null && this.state != null && this.state.equals(node.state);
         }
     }
 
     /**
-     * > The hashCode() function returns a hash code value for the object
-     *
+     * The hashCode() function returns a hash code value for the object
      * @return The hashCode of the state.
      */
 
     /**
-     * > The hashCode() function returns a hash code value for the object
-     *
+     *  The hashCode() function returns a hash code value for the object
      * @return The hashCode of the state.
      */
     public int hashCode() {
@@ -79,7 +74,6 @@ public class Node implements Comparable<Node> {
 
     /**
      * This function returns the parent of the current node.
-     *
      * @return The parent of the node.
      */
 
@@ -94,7 +88,6 @@ public class Node implements Comparable<Node> {
 
     /**
      * This function returns the value of the Action variable
-     *
      * @return The action of the route.
      */
     public Route getAction() {
@@ -103,7 +96,6 @@ public class Node implements Comparable<Node> {
 
     /**
      * This function returns the path cost of the node
-     *
      * @return The path cost of the node.
      */
     public int getPath_cost() {
