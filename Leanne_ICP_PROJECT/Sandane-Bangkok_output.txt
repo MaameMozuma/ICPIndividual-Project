@@ -1,0 +1,5 @@
+1. WF from SDN to OSL 0 stops
+2. DY from OSL to BKK 0 stops
+Total flights: 2
+Total additional stops:0
+Optimality Criteria: flights
