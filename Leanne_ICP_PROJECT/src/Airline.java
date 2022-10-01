@@ -13,7 +13,24 @@ public class Airline {
     private String Country;
     private String Active;
 
-    public Airline(int airline_ID, String name, String alias, String IATA_Code, String ICAO_Code, String callsign, String country, String active) {
+    /**
+     * @param airline_ID
+     * @param name
+     * @param alias
+     * @param IATA_Code
+     * @param ICAO_Code
+     * @param callsign
+     * @param country
+     * @param active
+     * */
+    public Airline(int airline_ID,
+                   String name,
+                   String alias,
+                   String IATA_Code,
+                   String ICAO_Code,
+                   String callsign,
+                   String country,
+                   String active) {
         this.Airline_ID = airline_ID;
         this.Name = name;
         this.Alias = alias;
@@ -30,6 +47,15 @@ public class Airline {
      * @return The toString method is being returned.
      */
     public String toString() {
-        return "Airline{Airline_ID=" + this.Airline_ID + ", Name='" + this.Name + "', Alias='" + this.Alias + "', IATA_Code='" + this.IATA_Code + "', ICAO_Code='" + this.ICAO_Code + "', Callsign='" + this.Callsign + "', Country='" + this.Country + "', Active='" + this.Active + "'}";
+        return "Airline{Airline_ID=" +
+                this.Airline_ID +
+                ", Name='" + this.Name + "', Alias='" + this.Alias +
+                "', IATA_Code='" + this.IATA_Code +
+                "', ICAO_Code='" + this.ICAO_Code +
+                "', Callsign='" + this.Callsign +
+                "', Country='" + this.Country +
+                "', Active='" + this.Active + "'}";
     }
+}
+
 }
