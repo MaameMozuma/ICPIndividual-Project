@@ -6,7 +6,7 @@ NB: Kindly select Leanne_ICP_PROJECT to see all files that were created. It incl
 To run test cases:
 - create your input file (.txt)
 - go the main.java file
-- replace "accra-winnipeg.txt" with your input file in quotation marks. E.g. "accra-istanbul.txt"
+- replace "accra-winnipeg.txt" with your input file in quotation marks depending on the location of the text files. E.g. "accra-istanbul.txt"
 - then run the main file
 
 **Tech Stack**
